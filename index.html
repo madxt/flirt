@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Message</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+        }
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff69b4;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #28a745;
+            color: white;
+        }
+        .no {
+            background-color: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>I love you!</h1>
+        <div id="buttons">
+            <button class="yes" onclick="handleYes()">Yes</button>
+            <button class="no" onclick="handleNo()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let noCount = 0;
+        const reasons = [
+            "Are you sure? Please say Yes!",
+            "You know I love you unconditionally.. please say yes",
+            "I will treat you like a queen my darling, please say Yes!",
+            "I will keep you happy always, please say Yes!",
+            "I can't imagine my life without you, please say Yes!",
+            "Please give me a chance bae, say Yes!"
+        ];
+        
+        function handleYes() {
+            window.location.href = "love.html";
+        }
+
+        function handleNo() {
+            noCount++;
+            const container = document.querySelector('.container');
+            const message = document.querySelector('.container p') || document.createElement('p');
+
+            if (noCount <= 6) {
+                message.textContent = reasons[noCount - 1];
+                container.appendChild(message);
+            } else {
+                message.textContent = "Get lost!";
+                container.appendChild(message);
+                document.getElementById('buttons').style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
